@@ -1,1 +1,3 @@
 # CMPE-131-Project-Camp-Buddy
+
+* HIGH-LEVEL REQUIREMENTS
