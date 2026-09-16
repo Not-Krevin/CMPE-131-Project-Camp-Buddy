@@ -5,6 +5,8 @@
 
 using namespace std;
 
+//Note this is step 0 of this feature space most of this will need to be changed.
+
 // Basic user information.
 // This would normally be created by your User Accounts code.
 struct User {
