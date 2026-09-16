@@ -4,6 +4,8 @@
 #include <vector>
 #include <limits>
 
+//Note this is step 0 of this feature space most of this will need to be changed.
+
 using namespace std;
 
 // Represents one registered Camp Buddies user.
