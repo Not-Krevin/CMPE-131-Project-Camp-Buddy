@@ -5,6 +5,8 @@
 
 using namespace std;
 
+//Note this is step 0 of this feature space most of this will need to be changed.
+
 // Represents a Camp Buddies user.
 struct User {
     int profileId;
