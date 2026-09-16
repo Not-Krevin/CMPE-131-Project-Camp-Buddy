@@ -6,6 +6,8 @@
 
 using namespace std;
 
+//Note this is step 0 of this feature space most of this will need to be changed.
+
 // ----------------------------------------
 // EXISTING USER AND TRIP STRUCTURES
 // ----------------------------------------
