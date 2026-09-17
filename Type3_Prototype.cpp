@@ -83,13 +83,13 @@ public:
                      const vector<int>& members) {
         Trip newTrip;
 
-        newTrip.tripId = tripId;
-        newTrip.tripName = tripName;
+        newTrip.tripId {tripId};
+        newTrip.tripName {tripName};
         newTrip.location = "Not entered yet";
         newTrip.startDate = "Not entered yet";
         newTrip.endDate = "Not entered yet";
-        newTrip.leaderProfileId = leaderProfileId;
-        newTrip.memberProfileIds = members;
+        newTrip.leaderProfileId {leaderProfileId};
+        newTrip.memberProfileIds {members};
 
         trips.push_back(newTrip);
     }
@@ -157,12 +157,12 @@ public:
 
         GearItem newItem;
 
-        newItem.gearItemId = nextGearItemId++;
-        newItem.tripId = tripId;
-        newItem.itemName = itemName;
-        newItem.quantity = quantity;
-        newItem.category = category;
-        newItem.notes = notes;
+        newItem.gearItemId {++nextGearItemId};
+        newItem.tripId {tripId};
+        newItem.itemName {itemName};
+        newItem.quantity {quantity};
+        newItem.category {category};
+        newItem.notes {notes};
 
         // A newly added item has not been claimed yet.
         newItem.status = GearStatus::UNASSIGNED;
@@ -336,10 +336,10 @@ public:
             return;
         }
 
-        item->itemName = newItemName;
-        item->quantity = newQuantity;
-        item->category = newCategory;
-        item->notes = newNotes;
+        item->itemName {newItemName};
+        item->quantity {newQuantity};
+        item->category {newCategory};
+        item->notes {newNotes};
 
         cout << "Gear item updated successfully.\n";
     }
@@ -372,8 +372,7 @@ public:
 
                 gearItems.erase(itemPosition);
 
-                cout << deletedItemName
-                     << " was removed from the gear list.\n";
+                cout << deletedItemName << " was removed from the gear list.\n";
 
                 return;
             }
