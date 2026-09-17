@@ -4,6 +4,14 @@
 #include <vector>
 #include <limits>
 
+#include "Type2_Prototype.cpp"
+#include "Type3_Prototype.cpp"
+#include "Type4_Prototype.cpp"
+#include "Type5_Prototype.cpp"
+#include "Type6_Prototype.cpp"
+#include "Type7_Prototype.cpp"
+
+
 //Note this is step 0 of this feature space most of this will need to be changed.
 
 using namespace std;
@@ -49,10 +57,10 @@ private:
     vector<GearList> gearLists;
     vector<GearAssignment> gearAssignments;
 
-    int nextProfileId = 1;
-    int nextTripId = 1;
-    int nextGearListId = 1;
-    int nextAssignmentId = 1;
+    int nextProfileId {1};
+    int nextTripId {1};
+    int nextGearListId {1};
+    int nextAssignmentId {1};
 
     string loggedInEmail = "";
 
@@ -72,12 +80,12 @@ public:
         }
 
         User newUser;
-        newUser.profileId = nextProfileId++;
-        newUser.name = name;
-        newUser.email = email;
-        newUser.password = password; // Replace with password hash in a real app.
+        newUser.profileId {++nextProfileId};
+        newUser.name {name};
+        newUser.email {email};
+        newUser.password {password}; // Replace with password hash in a real app.
 
-        usersByEmail[email] = newUser;
+        usersByEmail[email] {newUser};
 
         cout << "Account created successfully.\n";
         cout << "Your profile ID is: " << newUser.profileId << "\n";
@@ -91,7 +99,7 @@ public:
             return false;
         }
 
-        auto user = usersByEmail.find(email);
+        auto user {usersByEmail.find(email)};
 
         if (user == usersByEmail.end()) {
             cout << "No account was found with that email.\n";
@@ -103,7 +111,7 @@ public:
             return false;
         }
 
-        loggedInEmail = email;
+        loggedInEmail {email};
         cout << "Welcome, " << user->second.name << "!\n";
         return true;
     }
@@ -205,10 +213,10 @@ public:
         }
 
         GearAssignment newAssignment;
-        newAssignment.assignmentId = nextAssignmentId++;
-        newAssignment.itemName = itemName;
-        newAssignment.tripId = tripId;
-        newAssignment.assignedToProfileId = assignedToProfileId;
+        newAssignment.assignmentId {++nextAssignmentId};
+        newAssignment.itemName {itemName};
+        newAssignment.tripId {tripId};
+        newAssignment.assignedToProfileId {assignedToProfileId};
 
         gearAssignments.push_back(newAssignment);
 
@@ -227,7 +235,7 @@ public:
 
         cout << "\n--- My Trips ---\n";
 
-        bool foundTrip = false;
+        bool foundTrip {false};
 
         for (const Trip& trip : trips) {
             if (trip.ownerProfileId == currentUser->profileId) {
@@ -259,7 +267,7 @@ public:
         cout << "\n--- Gear Assignments for Trip ID "
              << tripId << " ---\n";
 
-        bool foundAssignment = false;
+        bool foundAssignment {false};
 
         for (const GearAssignment& assignment : gearAssignments) {
             if (assignment.tripId == tripId) {
@@ -267,7 +275,7 @@ public:
                      << " | Assigned to Profile ID: "
                      << assignment.assignedToProfileId << "\n";
 
-                foundAssignment = true;
+                foundAssignment {true};
             }
         }
 
