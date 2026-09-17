@@ -3,6 +3,13 @@
 #include <vector>
 #include <algorithm>
 
+#include "Type1_Prototype.cpp"
+#include "Type3_Prototype.cpp"
+#include "Type4_Prototype.cpp"
+#include "Type5_Prototype.cpp"
+#include "Type6_Prototype.cpp"
+#include "Type7_Prototype.cpp"
+
 using namespace std;
 
 //Note this is step 0 of this feature space most of this will need to be changed.
@@ -35,16 +42,16 @@ private:
     vector<User> users;
     vector<Trip> trips;
 
-    int nextTripId = 1;
+    int nextTripId {1};
 
 public:
     // Temporary helper function for testing.
     // In your complete program, users would be added through createAccount().
     void addTestUser(int profileId, const string& name, const string& email) {
         User newUser;
-        newUser.profileId = profileId;
-        newUser.name = name;
-        newUser.email = email;
+        newUser.profileId {profileId};
+        newUser.name {name};
+        newUser.email {email};
 
         users.push_back(newUser);
     }
@@ -70,14 +77,14 @@ public:
         }
 
         Trip newTrip;
-        newTrip.tripId = nextTripId++;
-        newTrip.tripName = tripName;
-        newTrip.location = location;
-        newTrip.startDate = startDate;
-        newTrip.endDate = endDate;
+        newTrip.tripId {++nextTripId};
+        newTrip.tripName {tripName};
+        newTrip.location {location};
+        newTrip.startDate {startDate};
+        newTrip.endDate {endDate};
 
         // Creator automatically becomes the trip leader.
-        newTrip.leaderProfileId = creatorProfileId;
+        newTrip.leaderProfileId {creatorProfileId};
 
         // The leader is also a member of the trip group.
         newTrip.memberProfileIds.push_back(creatorProfileId);
@@ -232,10 +239,10 @@ public:
             return;
         }
 
-        trip->tripName = newTripName;
-        trip->location = newLocation;
-        trip->startDate = newStartDate;
-        trip->endDate = newEndDate;
+        trip->tripName {newTripName};
+        trip->location {newLocation};
+        trip->startDate {newStartDate};
+        trip->endDate {newEndDate};
 
         cout << "Trip details updated successfully.\n";
     }
