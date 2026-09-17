@@ -96,13 +96,13 @@ public:
                      const vector<int>& members) {
         Trip newTrip;
 
-        newTrip.tripId = tripId;
-        newTrip.tripName = tripName;
-        newTrip.location = location;
-        newTrip.startDate = startDate;
-        newTrip.endDate = endDate;
-        newTrip.leaderProfileId = leaderProfileId;
-        newTrip.memberProfileIds = members;
+        newTrip.tripId {tripId};
+        newTrip.tripName {tripName};
+        newTrip.location {location};
+        newTrip.startDate {startDate};
+        newTrip.endDate {endDate};
+        newTrip.leaderProfileId {leaderProfileId};
+        newTrip.memberProfileIds {members};
 
         trips.push_back(newTrip);
     }
@@ -115,14 +115,14 @@ public:
                          const string& notes) {
         GearItem newItem;
 
-        newItem.gearItemId = gearItemId;
-        newItem.tripId = tripId;
-        newItem.itemName = itemName;
-        newItem.quantity = quantity;
-        newItem.category = category;
-        newItem.notes = notes;
-        newItem.status = GearStatus::UNASSIGNED;
-        newItem.assignedProfileId = -1;
+        newItem.gearItemId {gearItemId};
+        newItem.tripId {tripId};
+        newItem.itemName {itemName};
+        newItem.quantity {quantity};
+        newItem.category {category};
+        newItem.notes {notes};
+        newItem.status {GearStatus::UNASSIGNED};
+        newItem.assignedProfileId {-1};
 
         gearItems.push_back(newItem);
     }
@@ -166,8 +166,8 @@ public:
             return;
         }
 
-        item->assignedProfileId = memberProfileId;
-        item->status = GearStatus::ASSIGNED;
+        item->assignedProfileId {memberProfileId};
+        item->status {GearStatus::ASSIGNED};
 
         string message = getUserName(memberProfileId) +
                          " is bringing " +
@@ -260,26 +260,26 @@ public:
             return;
         }
 
-        int totalItems = 0;
-        int unassignedItems = 0;
-        int assignedItems = 0;
-        int completedItems = 0;
+        int totalItems {0};
+        int unassignedItems {0};
+        int assignedItems {0};
+        int completedItems {0};
 
         for (const GearItem& item : gearItems) {
             if (item.tripId == tripId) {
-                totalItems++;
+                ++totalItems;
 
                 if (item.status == GearStatus::UNASSIGNED) {
-                    unassignedItems++;
+                    ++unassignedItems;
                 } else if (item.status == GearStatus::ASSIGNED) {
-                    assignedItems++;
+                    ++assignedItems;
                 } else if (item.status == GearStatus::COMPLETED) {
-                    completedItems++;
+                    ++completedItems;
                 }
             }
         }
 
-        double packingPercent = 0.0;
+        double packingPercent {0.0};
 
         if (totalItems > 0) {
             packingPercent =
@@ -347,7 +347,7 @@ public:
 
         cout << "\nMISSING OR INCOMPLETE EQUIPMENT\n";
 
-        bool hasMissingEquipment = false;
+        bool hasMissingEquipment {false};
 
         for (const GearItem& item : gearItems) {
             if (item.tripId == tripId &&
@@ -392,7 +392,7 @@ public:
         cout << "\n===== NOTIFICATIONS FOR "
              << getUserName(userProfileId) << " =====\n";
 
-        bool hasNotifications = false;
+        bool hasNotifications {false};
 
         for (Notification& notification : notifications) {
             if (notification.recipientProfileId == userProfileId) {
@@ -405,8 +405,8 @@ public:
                 cout << "\n";
 
                 // Mark as read after displaying it.
-                notification.read = true;
-                hasNotifications = true;
+                notification.read {true};
+                hasNotifications {true};
             }
         }
 
@@ -433,11 +433,11 @@ private:
             if (memberId != personWhoMadeChange) {
                 Notification newNotification;
 
-                newNotification.notificationId = nextNotificationId++;
-                newNotification.tripId = tripId;
-                newNotification.recipientProfileId = memberId;
-                newNotification.message = message;
-                newNotification.read = false;
+                newNotification.notificationId {++nextNotificationId};
+                newNotification.tripId {tripId};
+                newNotification.recipientProfileId {memberId};
+                newNotification.message {message};
+                newNotification.read {false};
 
                 notifications.push_back(newNotification);
             }
