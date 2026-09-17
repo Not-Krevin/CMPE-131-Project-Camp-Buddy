@@ -6,6 +6,14 @@
 
 using namespace std;
 
+#include "Type1_Prototype.cpp"
+#include "Type2_Prototype.cpp"
+#include "Type3_Prototype.cpp"
+#include "Type4_Prototype.cpp"
+#include "Type5_Prototype.cpp"
+
+#include "Type7_Prototype.cpp"
+
 //Note this is step 0 of this feature space most of this will need to be changed.
 
 // --------------------------------------------
@@ -113,9 +121,9 @@ public:
                      const vector<int>& memberIds) {
         Trip newTrip;
 
-        newTrip.tripId = tripId;
-        newTrip.tripName = tripName;
-        newTrip.location = location;
+        newTrip.tripId {tripId};
+        newTrip.tripName {tripName};
+        newTrip.location {location;
         newTrip.startDate = startDate;
         newTrip.endDate = endDate;
         newTrip.leaderProfileId = leaderProfileId;
