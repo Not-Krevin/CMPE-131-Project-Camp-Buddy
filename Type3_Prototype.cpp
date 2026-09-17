@@ -5,6 +5,14 @@
 
 using namespace std;
 
+#include "Type1_Prototype.cpp"
+#include "Type2_Prototype.cpp"
+
+#include "Type4_Prototype.cpp"
+#include "Type5_Prototype.cpp"
+#include "Type6_Prototype.cpp"
+#include "Type7_Prototype.cpp"
+
 //Note this is step 0 of this feature space most of this will need to be changed.
 
 // Represents a Camp Buddies user.
