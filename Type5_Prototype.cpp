@@ -7,6 +7,14 @@ using namespace std;
 
 //Note this is step 0 of this feature space most of this will need to be changed.
 
+#include "Type1_Prototype.cpp"
+#include "Type2_Prototype.cpp"
+#include "Type3_Prototype.cpp"
+#include "Type4_Prototype.cpp"
+
+#include "Type6_Prototype.cpp"
+#include "Type7_Prototype.cpp"
+
 // ------------------------------------------
 // USERS, TRIPS, AND GEAR ITEMS
 // These can be combined with your earlier code.
