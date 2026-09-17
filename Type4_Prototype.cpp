@@ -8,6 +8,15 @@ using namespace std;
 
 //Note this is step 0 of this feature space most of this will need to be changed.
 
+#include "Type1_Prototype.cpp"
+#include "Type2_Prototype.cpp"
+#include "Type4_Prototype.cpp"
+
+#include "Type5_Prototype.cpp"
+#include "Type6_Prototype.cpp"
+#include "Type7_Prototype.cpp"
+
+
 // ----------------------------------------
 // EXISTING USER AND TRIP STRUCTURES
 // ----------------------------------------
@@ -92,13 +101,13 @@ public:
                      const string& notes) {
         GearItem newItem;
 
-        newItem.gearItemId = nextGearItemId++;
-        newItem.tripId = tripId;
-        newItem.itemName = itemName;
-        newItem.quantity = quantity;
-        newItem.category = category;
-        newItem.notes = notes;
-        newItem.status = GearStatus::UNASSIGNED;
+        newItem.gearItemId {++nextGearItemId};
+        newItem.tripId {tripId};
+        newItem.itemName {itemName};
+        newItem.quantity {quantity};
+        newItem.category {category};
+        newItem.notes {notes};
+        newItem.status {GearStatus::UNASSIGNED};
         newItem.assignedProfileId = -1;
 
         gearItems.push_back(newItem);
@@ -273,7 +282,7 @@ public:
 
         cout << "\n===== GEAR WARNINGS =====\n";
 
-        bool hasWarnings = false;
+        bool hasWarnings {false};
 
         // First, identify unassigned items.
         for (const GearItem& item : gearItems) {
@@ -283,7 +292,7 @@ public:
                      << item.itemName
                      << " has not been claimed by a group member.\n";
 
-                hasWarnings = true;
+                hasWarnings {true};
             }
         }
 
@@ -294,9 +303,9 @@ public:
                 continue;
             }
 
-            int duplicateCount = 0;
+            int duplicateCount {0};
 
-            for (size_t j = 0; j < gearItems.size(); j++) {
+            for (size_t j{0}; j < gearItems.size(); ++j) {
                 if (gearItems[j].tripId == tripId &&
                     namesMatch(gearItems[i].itemName,
                                gearItems[j].itemName)) {
@@ -305,9 +314,9 @@ public:
             }
 
             // Print each duplicate warning only once.
-            bool alreadyReported = false;
+            bool alreadyReported {false};
 
-            for (size_t k = 0; k < i; k++) {
+            for (size_t k{0}; k < i; ++k) {
                 if (gearItems[k].tripId == tripId &&
                     namesMatch(gearItems[i].itemName,
                                gearItems[k].itemName)) {
